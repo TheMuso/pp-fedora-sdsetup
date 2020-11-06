@@ -53,6 +53,9 @@ then
     infecho "Mounting your /dev into the rootfs..."
     infecho "This is neccesary for dnf to work, because reasons."
     mount --bind /dev rootfs/dev
+    
+    infecho "Copy resolv.conf /etc/tmp-resolv.conf"
+    cp /etc/resolv.conf rootfs/etc/tmp-resolv.conf
 
     if [[ $HOSTARCH -ne "aarch64" ]]; then
         infecho "Chrooting with qemu into rootfs..."
